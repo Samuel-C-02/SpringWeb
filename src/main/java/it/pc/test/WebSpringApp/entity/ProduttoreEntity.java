@@ -13,7 +13,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProduttoreEntity {
+public class ProduttoreEntity extends AbstractAuditEntity {
 
     @Id
     @Column(name = "id_produttore")
@@ -28,7 +28,7 @@ public class ProduttoreEntity {
     private String descrizione;
 
     @JoinColumn(name = "partner_id")
-    @OneToOne
+    @ManyToOne
     private PartnerEntity partner;
 
     private TipoCategoria categoria;

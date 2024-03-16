@@ -5,12 +5,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PostUpdate;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 
+
+@EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 @Data
-public abstract class AbstractBaseEntity {
+public abstract class AbstractAuditEntity extends AbstractBaseEntity{
 
     @Column(name = "data_inserimento")
     private LocalDateTime dataInserimento;
