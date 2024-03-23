@@ -31,6 +31,7 @@ public class ProduttoreEntity extends AbstractAuditEntity {
     @ManyToOne
     private PartnerEntity partner;
 
+    @Column(name = "tipo_categoria")
     private TipoCategoria categoria;
 
     @Override
