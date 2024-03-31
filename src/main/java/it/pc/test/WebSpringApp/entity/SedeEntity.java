@@ -2,13 +2,15 @@ package it.pc.test.WebSpringApp.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "sede")
 @Data
-public class SedeEntity {
+public class SedeEntity  extends AbstractBaseEntity{
 
     @Id
     @Column(name = "id_sede")

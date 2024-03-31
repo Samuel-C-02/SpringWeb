@@ -5,13 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Immutable;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "sede")
+@Table(name = "tipo_prodotto")
 @Data
 @Immutable
-public class TipoProdottoEntity {
+public class TipoProdottoEntity  extends AbstractBaseEntity{
 
     @Id
     @Column(name = "id_tipo")
