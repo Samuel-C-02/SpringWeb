@@ -3,11 +3,15 @@ package it.pc.test.WebSpringApp.dto;
 import it.pc.test.WebSpringApp.entity.PartnerEntity;
 import it.pc.test.WebSpringApp.enums.TipoCategoria;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ProduttoreDTO {
+@NoArgsConstructor
+public class ProduttoreDTO extends AbstractBaseDTO<Integer> {
 
     private Integer id;
 
