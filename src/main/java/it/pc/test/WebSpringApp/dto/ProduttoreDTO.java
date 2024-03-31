@@ -4,6 +4,8 @@ import it.pc.test.WebSpringApp.entity.PartnerEntity;
 import it.pc.test.WebSpringApp.enums.TipoCategoria;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class ProduttoreDTO {
 
@@ -16,5 +18,7 @@ public class ProduttoreDTO {
     private PartnerEntity partner;
 
     private TipoCategoria categoria;
+
+    private List<ProdottoDTO> prodotti;
 
 }
