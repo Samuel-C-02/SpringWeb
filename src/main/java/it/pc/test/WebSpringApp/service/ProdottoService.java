@@ -1,12 +1,9 @@
 package it.pc.test.WebSpringApp.service;
 
 import it.pc.test.WebSpringApp.dto.ProdottoDTO;
-import it.pc.test.WebSpringApp.dto.ProduttoreDTO;
 import it.pc.test.WebSpringApp.entity.ProdottoEntity;
 import it.pc.test.WebSpringApp.mapper.ProdottoMapper;
-import it.pc.test.WebSpringApp.mapper.ProduttoreMapper;
 import it.pc.test.WebSpringApp.repository.ProdottoRepository;
-import it.pc.test.WebSpringApp.repository.ProduttoreRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProdottoService extends AbstractBaseService<ProdottoEntity, ProdottoDTO,Integer, ProdottoMapper, ProdottoRepository> {
+public class ProdottoService extends AbstractBaseService<ProdottoEntity, ProdottoDTO, Integer, ProdottoMapper, ProdottoRepository> {
 
     final ProdottoRepository prodottoRepository;
     final ProdottoMapper prodottoMapper = Mappers.getMapper(ProdottoMapper.class);
@@ -35,7 +32,7 @@ public class ProdottoService extends AbstractBaseService<ProdottoEntity, Prodott
         return prodottoRepository;
     }
 
-    public List<ProdottoDTO> findAllProdottiByProduttoreId(Integer id){
+    public List<ProdottoDTO> findAllProdottiByProduttoreId(Integer id) {
         return getMapper().entityToDTO(getRepository().findAllByProduttoreId(id));
     }
 }

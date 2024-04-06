@@ -10,6 +10,7 @@ import java.util.List;
 public interface ProduttoreMapper extends IMapperBase<ProduttoreEntity, ProduttoreDTO> {
 
     ProduttoreDTO entityToDTO(ProduttoreEntity e);
+
     List<ProduttoreDTO> entityToDTO(List<ProduttoreEntity> eList);
 
 

@@ -14,8 +14,7 @@ public class PartnerService extends AbstractBaseService<
         PartnerDTO,
         Integer,
         PartnerMapper,
-        PartnerRepository>
-{
+        PartnerRepository> {
 
     final PartnerRepository partnerRepository;
     final PartnerMapper partnerMapper = Mappers.getMapper(PartnerMapper.class);

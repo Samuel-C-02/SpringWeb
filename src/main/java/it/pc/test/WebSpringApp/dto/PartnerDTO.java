@@ -1,7 +1,6 @@
 package it.pc.test.WebSpringApp.dto;
 
 import it.pc.test.WebSpringApp.entity.SedeEntity;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;

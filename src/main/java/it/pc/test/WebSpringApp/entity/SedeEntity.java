@@ -2,7 +2,6 @@ package it.pc.test.WebSpringApp.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.Objects;

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
-public class ProdottoDTO extends AbstractBaseDTO<Integer>{
+public class ProdottoDTO extends AbstractBaseDTO<Integer> {
 
     private Integer id;
     private String nomeProdotto;

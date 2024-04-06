@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 @Data
-public abstract class AbstractAuditEntity extends AbstractBaseEntity{
+public abstract class AbstractAuditEntity extends AbstractBaseEntity {
 
     @Column(name = "data_inserimento")
     private LocalDateTime dataInserimento;
@@ -22,12 +22,12 @@ public abstract class AbstractAuditEntity extends AbstractBaseEntity{
     private LocalDateTime dataModifica;
 
     @PostConstruct
-    public void createdEntity(){
+    public void createdEntity() {
         setDataInserimento(LocalDateTime.now());
     }
 
     @PostUpdate
-    public void updatedEntity(){
+    public void updatedEntity() {
         setDataModifica(LocalDateTime.now());
     }
 

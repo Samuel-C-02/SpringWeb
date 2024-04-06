@@ -3,7 +3,6 @@ package it.pc.test.WebSpringApp.entity;
 import it.pc.test.WebSpringApp.enums.Provenienza;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.Objects;

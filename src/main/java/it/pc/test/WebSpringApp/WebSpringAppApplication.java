@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "it.pc.test.WebSpringApp")
 public class WebSpringAppApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebSpringAppApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebSpringAppApplication.class, args);
+    }
 
 }
