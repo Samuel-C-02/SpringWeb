@@ -13,19 +13,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/produttore")
-public class ProduttoreController extends AbstractBaseController {
+public class ProduttoreController extends AbstractBaseController<ProduttoreDTO, ProduttoreService, Integer> {
 
     @Autowired
-    ProduttoreService produttoreService;
+    private ProduttoreService produttoreService;
 
-    @GetMapping("/all")
-    public List<ProduttoreDTO> getAll() {
-        return produttoreService.findAllBase();
-    }
 
     @GetMapping("/{idProduttore}")
     public ProduttoreDTO getProduttoreWithProdotti(@PathVariable(name = "idProduttore") Integer id) {
         return produttoreService.getProduttoriWithProdotti(id);
     }
 
+    @Override
+    public ProduttoreService getService() {
+        return produttoreService;
+    }
 }
