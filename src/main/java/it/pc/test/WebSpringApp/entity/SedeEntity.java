@@ -5,12 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "sede")
 @Data
-public class SedeEntity  extends AbstractBaseEntity{
+public class SedeEntity extends AbstractBaseEntity {
 
     @Id
     @Column(name = "id_sede")
@@ -27,4 +27,17 @@ public class SedeEntity  extends AbstractBaseEntity{
     @Column(name = "fatturato_avg")
     private BigDecimal fatturatoMedioAnnuale;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        SedeEntity that = (SedeEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
+    }
 }
