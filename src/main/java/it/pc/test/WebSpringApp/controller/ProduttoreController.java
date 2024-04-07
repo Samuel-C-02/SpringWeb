@@ -17,7 +17,7 @@ public class ProduttoreController extends AbstractBaseController<ProduttoreDTO, 
     private ProduttoreService produttoreService;
 
 
-    @GetMapping("/{idProduttore}")
+    @GetMapping("/{idProduttore}/with-products")
     public ProduttoreDTO getProduttoreWithProdotti(@PathVariable(name = "idProduttore") Integer id) {
         return produttoreService.getProduttoriWithProdotti(id);
     }

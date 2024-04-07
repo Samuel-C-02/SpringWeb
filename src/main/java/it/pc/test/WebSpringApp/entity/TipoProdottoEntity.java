@@ -18,7 +18,7 @@ public class TipoProdottoEntity extends AbstractBaseEntity {
 
     @Id
     @Column(name = "id_tipo")
-    private Integer idTipo;
+    private Integer id;
 
     @Column(name = "tipo_prodotto")
     private String tipoProdotto;
@@ -29,11 +29,11 @@ public class TipoProdottoEntity extends AbstractBaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         TipoProdottoEntity that = (TipoProdottoEntity) o;
-        return Objects.equals(idTipo, that.idTipo);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), idTipo);
+        return Objects.hash(super.hashCode(), id);
     }
 }

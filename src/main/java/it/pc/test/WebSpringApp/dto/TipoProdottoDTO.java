@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TipoProdottoDTO extends AbstractBaseDTO<Integer> {
 
-    private Integer idTipo;
+    private Integer id;
     private String tipoProdotto;
 
 }

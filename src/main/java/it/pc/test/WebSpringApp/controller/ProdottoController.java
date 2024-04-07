@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/produttore")
+@RequestMapping("/prodotto")
 public class ProdottoController extends AbstractBaseController<ProdottoDTO, ProdottoService, Integer> {
 
     @Autowired
