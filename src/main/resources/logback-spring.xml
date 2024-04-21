@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                <!--%black(%d{ISO8601}) %highlight(%-5level) [%boldYellow(%t)] %cyan(%C{1}) %green( [%M] l: %L): %msg%n%throwable-->
+                %white(%d{ISO8601}) %highlight(%-5level) %cyan([%C{0}]) %green([%M]) %yellow([L:%L]) : %msg%n %red(%throwable)
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <appender-ref ref="Console"/>
+    </root>
+
+</configuration>
