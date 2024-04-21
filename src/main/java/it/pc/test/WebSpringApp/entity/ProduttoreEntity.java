@@ -34,6 +34,17 @@ public class ProduttoreEntity extends AbstractAuditEntity {
     @Column(name = "tipo_categoria")
     private TipoCategoria categoria;
 
+    @Column(name = "n_dipendenti")
+    private Double numeroDipendenti;
+
+    @Column(name = "fatturato_annuo")
+    private Double fatturatoAnnuo;
+
+    @JoinColumn(name = "sede_id")
+    @ManyToOne
+    private SedeEntity sede;
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

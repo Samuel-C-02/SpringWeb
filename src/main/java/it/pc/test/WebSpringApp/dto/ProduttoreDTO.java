@@ -1,6 +1,7 @@
 package it.pc.test.WebSpringApp.dto;
 
 import it.pc.test.WebSpringApp.entity.PartnerEntity;
+import it.pc.test.WebSpringApp.entity.SedeEntity;
 import it.pc.test.WebSpringApp.enums.TipoCategoria;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,10 +20,12 @@ public class ProduttoreDTO extends AbstractBaseDTO<Integer> {
 
     private String descrizione;
 
-    private PartnerEntity partner;
+    private PartnerDTO partner;
 
     private TipoCategoria categoria;
-
+    private Double numeroDipendenti;
+    private Double fatturatoAnnuo;
+    private SedeDTO sede;
     private List<ProdottoDTO> prodotti;
 
 }

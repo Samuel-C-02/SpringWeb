@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -13,8 +13,10 @@ public class SedeDTO extends AbstractBaseDTO<Integer> {
 
 
     private Integer id;
-    private String nomeSede;
-    private String indirizzoSede;
-    private BigDecimal fatturatoMedioAnnuale;
+    private String indirizzo;
+    private String nazione;
+    private LocalDate dataCostruzione;
+    private Double valoreImmobile;
+
 
 }

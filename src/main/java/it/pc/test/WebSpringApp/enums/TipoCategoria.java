@@ -1,7 +1,7 @@
 package it.pc.test.WebSpringApp.enums;
 
 public enum TipoCategoria {
-
+    NON_SPECIFICATO(0),
     PRODUTTORE_VENDITORE(1),
     VENDITORE(2),
     PRODUTTORE(3),

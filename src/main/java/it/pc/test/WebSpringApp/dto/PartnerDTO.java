@@ -1,6 +1,5 @@
 package it.pc.test.WebSpringApp.dto;
 
-import it.pc.test.WebSpringApp.entity.SedeEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,8 @@ public class PartnerDTO extends AbstractBaseDTO<Integer> {
 
     private Integer id;
     private String nome;
-    private SedeEntity sede;
+    private SedeDTO sede;
     private LocalDate dataFondazione;
-
+    private Double numeroDipendenti;
+    private Double fatturatoAnnuo;
 }

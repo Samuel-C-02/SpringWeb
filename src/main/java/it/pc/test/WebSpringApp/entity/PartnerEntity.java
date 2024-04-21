@@ -20,12 +20,18 @@ public class PartnerEntity extends AbstractBaseEntity {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "data_fondazione")
+    private LocalDate dataFondazione;
+
+    @Column(name = "n_dipendenti")
+    private Double numeroDipendenti;
+
+    @Column(name = "fatturato_annuo")
+    private Double fatturatoAnnuo;
+
     @JoinColumn(name = "sede_id")
     @ManyToOne
     private SedeEntity sede;
-
-    @Column(name = "data_fondazione")
-    private LocalDate dataFondazione;
 
     @Override
     public boolean equals(Object o) {

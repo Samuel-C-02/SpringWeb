@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -17,14 +18,18 @@ public class SedeEntity extends AbstractBaseEntity {
     @SequenceGenerator(name = "sede_id_generator", sequenceName = "sede_id_seq", allocationSize = 1)
     private Integer id;
 
-    @Column(name = "nome_sede")
-    private String nomeSede;
+    @Column(name = "indirizzo")
+    private String indirizzo;
 
-    @Column(name = "indirizzo_sede")
-    private String indirizzoSede;
+    @Column(name = "nazione")
+    private String nazione;
 
-    @Column(name = "fatturato_avg")
-    private BigDecimal fatturatoMedioAnnuale;
+    @Column(name = "data_costruzione")
+    private LocalDate dataCostruzione;
+
+    @Column(name = "valore_immobile")
+    private Double valoreImmobile;
+
 
     @Override
     public boolean equals(Object o) {
