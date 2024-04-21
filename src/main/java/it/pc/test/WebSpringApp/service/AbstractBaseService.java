@@ -13,8 +13,9 @@ public abstract class AbstractBaseService<E, D, I, M extends IMapperBase<E, D>, 
     }
 
     public D findByIdBase(I id) {
-        return getMapper().entityToDTO(getRepository().findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Errore, l'id inserito non esiste. Id: " + id)));
+        return getMapper().entityToDTO(getRepository()
+                                               .findById(id)
+                                               .orElseThrow(() -> new EntityNotFoundException("Errore, l'id inserito non esiste. Id: " + id)));
     }
 
     public abstract M getMapper();

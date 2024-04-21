@@ -30,13 +30,11 @@ public abstract class AbstractBaseController<
 
     @GetMapping("/{Id}")
     public Dto getAllById(@PathVariable(name = "Id") IdType id) {
-
         try {
             return getService().findByIdBase(id);
         } catch (EntityNotFoundException exc) {
             throw new BadRequestException(exc.getError(), exc);
         }
-
     }
 
 

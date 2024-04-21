@@ -10,10 +10,10 @@ public class BadRequestException extends AbstractUncheckedException {
     }
 
     public BadRequestException(String errorMessage) {
-    super(errorMessage);
+        super(errorMessage);
     }
 
-    public BadRequestException(HttpErroreMessage e,  Throwable cause) {
+    public BadRequestException(HttpErroreMessage e, Throwable cause) {
         super(e, cause);
     }
 }
