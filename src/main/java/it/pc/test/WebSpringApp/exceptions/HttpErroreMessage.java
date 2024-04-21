@@ -15,33 +15,35 @@ public class HttpErroreMessage {
     private String errorMessage;
     private String exceptionMessage;
     private LocalDateTime errorDate;
-    private HttpStatus httpStatus;
+
 
     public HttpErroreMessage() {
         this.errorMessage = GlobalConstants.HTTP_DEFAULT_MESSAGE;
         this.exceptionMessage = GlobalConstants.HTTP_DEFAULT_MESSAGE;
         this.errorDate = LocalDateTime.now();
-        this.httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+    }
+
+    public HttpErroreMessage(HttpErroreMessage e) {
+        this.errorMessage = e.getErrorMessage();
+        this.exceptionMessage = e.getExceptionMessage();
+        this.errorDate = LocalDateTime.now();
     }
 
     public HttpErroreMessage(String errorMessage, String exceptionMessage) {
         this.errorMessage = errorMessage;
         this.exceptionMessage = exceptionMessage;
         this.errorDate = LocalDateTime.now();
-        this.httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
     public HttpErroreMessage(String errorMessage, String exceptionMessage, HttpStatus httpStatus) {
         this.errorMessage = errorMessage;
         this.exceptionMessage = exceptionMessage;
         this.errorDate = LocalDateTime.now();
-        this.httpStatus = httpStatus;
     }
 
     public HttpErroreMessage(String errorMessage, HttpStatus httpStatus) {
         this.errorMessage = errorMessage;
         this.exceptionMessage = GlobalConstants.HTTP_DEFAULT_MESSAGE;
         this.errorDate = LocalDateTime.now();
-        this.httpStatus = httpStatus;
     }
 }

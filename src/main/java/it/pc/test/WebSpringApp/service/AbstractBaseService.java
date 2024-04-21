@@ -1,5 +1,6 @@
 package it.pc.test.WebSpringApp.service;
 
+import it.pc.test.WebSpringApp.exceptions.EntityNotFoundException;
 import it.pc.test.WebSpringApp.mapper.IMapperBase;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,7 +14,7 @@ public abstract class AbstractBaseService<E, D, I, M extends IMapperBase<E, D>, 
 
     public D findByIdBase(I id) {
         return getMapper().entityToDTO(getRepository().findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Errore, l'id inserito non esiste. Id: " + id)));
+                .orElseThrow(() -> new EntityNotFoundException("Errore, l'id inserito non esiste. Id: " + id)));
     }
 
     public abstract M getMapper();

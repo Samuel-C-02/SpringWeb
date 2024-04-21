@@ -12,6 +12,20 @@ public abstract class AbstractUncheckedException extends RuntimeException {
         this.error = error;
     }
 
+    public AbstractUncheckedException(String message){
+        super(message);
+        this.error = new HttpErroreMessage(message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public AbstractUncheckedException(HttpErroreMessage e,  Throwable cause) {
+        super(cause);
+        this.error = e;
+    }
+
+    public AbstractUncheckedException() {
+    this.error = getError();
+    }
+
     public HttpErroreMessage getError() {
         return error != null
                 ? error

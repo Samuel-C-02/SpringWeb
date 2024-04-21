@@ -1,6 +1,8 @@
 package it.pc.test.WebSpringApp.controller;
 
 import it.pc.test.WebSpringApp.dto.AbstractBaseDTO;
+import it.pc.test.WebSpringApp.exceptions.BadRequestException;
+import it.pc.test.WebSpringApp.exceptions.EntityNotFoundException;
 import it.pc.test.WebSpringApp.service.AbstractBaseService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +30,13 @@ public abstract class AbstractBaseController<
 
     @GetMapping("/{Id}")
     public Dto getAllById(@PathVariable(name = "Id") IdType id) {
-        return getService().findByIdBase(id);
+
+        try {
+            return getService().findByIdBase(id);
+        } catch (EntityNotFoundException exc) {
+            throw new BadRequestException(exc.getError(), exc);
+        }
+
     }
 
 
