@@ -2,6 +2,7 @@ package it.pc.test.WebSpringApp.service;
 
 import it.pc.test.WebSpringApp.dto.ProdottoDTO;
 import it.pc.test.WebSpringApp.entity.ProdottoEntity;
+import it.pc.test.WebSpringApp.enums.Provenienza;
 import it.pc.test.WebSpringApp.mapper.ProdottoMapper;
 import it.pc.test.WebSpringApp.repository.ProdottoRepository;
 import org.mapstruct.factory.Mappers;
@@ -33,6 +34,14 @@ public class ProdottoService extends AbstractBaseService<ProdottoEntity, Prodott
     }
 
     public List<ProdottoDTO> findAllProdottiByProduttoreId(Integer id) {
-        return getMapper().entityToDTO(getRepository().findAllByProduttoreId(id));
+        return prodottoMapper.entityToDTO(prodottoRepository.findAllByProduttoreId(id));
+    }
+
+    public List<ProdottoDTO> getAllProdottiDisponibili() {
+        return prodottoMapper.entityToDTO(prodottoRepository.getAllProdottiDisponibili());
+    }
+
+    public List<ProdottoDTO> getAllProdottiByProvenienza(Provenienza p){
+        return prodottoMapper.entityToDTO(prodottoRepository.getAllProdottiByProvenienza(p));
     }
 }

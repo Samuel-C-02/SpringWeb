@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/tipo_prodotto")
-public class TipoProdottoController extends AbstractBaseController<TipoProdottoDTO, TipoProdottoService, Integer> {
+public class TipoProdottoController extends AbstractReadController<TipoProdottoDTO, TipoProdottoService, Integer> {
     @Autowired
     private TipoProdottoService tipoProdottoService;
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sede")
-public class SedeController extends AbstractBaseController<SedeDTO, SedeService, Integer> {
+public class SedeController extends AbstractReadController<SedeDTO, SedeService, Integer> {
     @Autowired
     private SedeService sedeService;
 

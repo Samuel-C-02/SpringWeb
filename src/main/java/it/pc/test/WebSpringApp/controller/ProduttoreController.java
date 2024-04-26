@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/produttore")
-public class ProduttoreController extends AbstractBaseController<ProduttoreDTO, ProduttoreService, Integer> {
+public class ProduttoreController extends AbstractReadController<ProduttoreDTO, ProduttoreService, Integer> {
 
     @Autowired
     private ProduttoreService produttoreService;
