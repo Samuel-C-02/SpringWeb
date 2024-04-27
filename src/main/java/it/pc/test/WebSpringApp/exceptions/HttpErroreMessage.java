@@ -2,7 +2,6 @@ package it.pc.test.WebSpringApp.exceptions;
 
 import it.pc.test.WebSpringApp.utils.GlobalConstants;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -35,13 +34,7 @@ public class HttpErroreMessage {
         this.errorDate = LocalDateTime.now();
     }
 
-    public HttpErroreMessage(String errorMessage, String exceptionMessage, HttpStatus httpStatus) {
-        this.errorMessage = errorMessage;
-        this.exceptionMessage = exceptionMessage;
-        this.errorDate = LocalDateTime.now();
-    }
-
-    public HttpErroreMessage(String errorMessage, HttpStatus httpStatus) {
+    public HttpErroreMessage(String errorMessage) {
         this.errorMessage = errorMessage;
         this.exceptionMessage = GlobalConstants.HTTP_DEFAULT_MESSAGE;
         this.errorDate = LocalDateTime.now();

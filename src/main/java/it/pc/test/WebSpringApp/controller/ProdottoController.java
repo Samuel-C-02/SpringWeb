@@ -26,8 +26,12 @@ public class ProdottoController extends AbstractReadController<ProdottoDTO, Prod
     }
 
     @GetMapping("/all/provenienza")
-    public List<ProdottoDTO> getAllProdottiByProvenienza(@RequestParam(name = "provenienza") Provenienza p){
+    public List<ProdottoDTO> getAllProdottiByProvenienza(@RequestParam(name = "provenienza") Provenienza p) {
         return getService().getAllProdottiByProvenienza(p);
     }
 
+    @GetMapping("all/tipo/{tipoId}")
+    public List<ProdottoDTO> getAllProdottiByTipoProdottoId(@PathVariable(name = "tipoId") Integer tipoId){
+        return getService().getAllProdottiByTipoProdottoId(tipoId);
+    }
 }

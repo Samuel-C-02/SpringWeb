@@ -1,7 +1,6 @@
 package it.pc.test.WebSpringApp.exceptions;
 
 import it.pc.test.WebSpringApp.utils.GlobalConstants;
-import org.springframework.http.HttpStatus;
 
 public abstract class AbstractUncheckedException extends RuntimeException {
 
@@ -14,7 +13,7 @@ public abstract class AbstractUncheckedException extends RuntimeException {
 
     public AbstractUncheckedException(String message) {
         super(message);
-        this.error = new HttpErroreMessage(message, HttpStatus.INTERNAL_SERVER_ERROR);
+        this.error = new HttpErroreMessage(message);
     }
 
     public AbstractUncheckedException(HttpErroreMessage e, Throwable cause) {
@@ -29,7 +28,7 @@ public abstract class AbstractUncheckedException extends RuntimeException {
     public HttpErroreMessage getError() {
         return error != null
                ? error
-               : new HttpErroreMessage(GlobalConstants.HTTP_DEFAULT_MESSAGE, HttpStatus.INTERNAL_SERVER_ERROR);
+               : new HttpErroreMessage(GlobalConstants.HTTP_DEFAULT_MESSAGE);
 
     }
 

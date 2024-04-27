@@ -16,7 +16,6 @@ public class InternalErrorException extends AbstractUncheckedException {
     public InternalErrorException() {
         setError(new HttpErroreMessage(
                 getError().getErrorMessage(),
-                getError().getExceptionMessage(),
-                HttpStatus.INTERNAL_SERVER_ERROR));
+                getError().getExceptionMessage()));
     }
 }

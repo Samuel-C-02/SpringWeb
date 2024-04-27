@@ -18,4 +18,7 @@ public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Intege
 
     @Query("SELECT p FROM ProdottoEntity p WHERE p.provenienza = ?1")
     List<ProdottoEntity> getAllProdottiByProvenienza(Provenienza p);
+
+    @Query("SELECT p FROM ProdottoEntity p WHERE p.tipoProdotto.id = ?1")
+    List<ProdottoEntity> getAllProdottiByTipoProdottoId(Integer id);
 }
