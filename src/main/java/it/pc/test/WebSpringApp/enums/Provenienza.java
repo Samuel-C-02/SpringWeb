@@ -1,6 +1,9 @@
 package it.pc.test.WebSpringApp.enums;
 
-public enum Provenienza {
+import java.util.HashMap;
+import java.util.Map;
+
+public enum Provenienza implements IEnum<Provenienza> {
 
     OTHER(0),
     USA(1),
@@ -15,6 +18,10 @@ public enum Provenienza {
     }
 
     Integer id;
+
+    public static Provenienza getEnumByValue(int value) {
+        return IEnum.getEnumByValueStatic(Provenienza.class, value);
+    }
 
     public Integer getId() {
         return id;

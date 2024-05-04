@@ -1,6 +1,6 @@
 package it.pc.test.WebSpringApp.enums;
 
-public enum TipoCategoria {
+public enum TipoCategoria implements IEnum<TipoCategoria> {
     NON_SPECIFICATO(0),
     PRODUTTORE_VENDITORE(1),
     VENDITORE(2),
@@ -12,6 +12,11 @@ public enum TipoCategoria {
     }
 
     Integer id;
+
+
+    public static TipoCategoria getEnumByValue(int value) {
+        return IEnum.getEnumByValueStatic(TipoCategoria.class, value);
+    }
 
     public Integer getId() {
         return id;
