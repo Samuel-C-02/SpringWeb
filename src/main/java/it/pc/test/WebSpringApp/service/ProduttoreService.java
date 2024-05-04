@@ -2,6 +2,7 @@ package it.pc.test.WebSpringApp.service;
 
 import it.pc.test.WebSpringApp.dto.ProdottoDTO;
 import it.pc.test.WebSpringApp.dto.ProduttoreDTO;
+import it.pc.test.WebSpringApp.dto.projection.ProduttoreBasicInfo;
 import it.pc.test.WebSpringApp.entity.ProduttoreEntity;
 import it.pc.test.WebSpringApp.mapper.ProduttoreMapper;
 import it.pc.test.WebSpringApp.repository.ProduttoreRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProduttoreService extends AbstractBaseService<
@@ -50,4 +52,7 @@ public class ProduttoreService extends AbstractBaseService<
         return produttoreMapper.entityToDTO(produttoreRepository.findProduttoreByNome(nome));
     }
 
+    public List<ProduttoreBasicInfo> getAllProduttoriBasicByIds(Set<Integer> ids){
+        return produttoreRepository.getAllProduttoriBasicInfoByIds(ids);
+    }
 }
