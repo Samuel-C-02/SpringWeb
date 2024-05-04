@@ -45,4 +45,9 @@ public class ProduttoreService extends AbstractBaseService<
     public ProduttoreRepository getRepository() {
         return produttoreRepository;
     }
+
+    public ProduttoreDTO getProduttoreByNome(String nome) {
+        return produttoreMapper.entityToDTO(produttoreRepository.findProduttoreByNome(nome));
+    }
+
 }
