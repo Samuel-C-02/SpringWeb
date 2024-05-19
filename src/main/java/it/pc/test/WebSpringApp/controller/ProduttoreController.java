@@ -12,7 +12,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/produttore")
-public class ProduttoreController extends AbstractReadController<ProduttoreDTO, ProduttoreService, Integer> {
+public class ProduttoreController extends AbstractCrudController<ProduttoreDTO, ProduttoreService, Integer> {
 
     @Autowired
     private ProduttoreService produttoreService;

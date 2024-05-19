@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/partner")
-public class PartnerController extends AbstractReadController<PartnerDTO, PartnerService, Integer> {
+public class PartnerController extends AbstractCrudController<PartnerDTO, PartnerService, Integer> {
     @Autowired
     private PartnerService partnerService;
 

@@ -61,7 +61,7 @@ public class ProduttoreService extends AbstractCrudService<
     @Override
     public ProduttoreDTO insert(ProduttoreDTO objToSave) {
         if (objToSave == null || objToSave.getPartner() == null || objToSave.getSede() == null) {
-            throw new BadRequestException(new HttpErroreMessage("Error saving ProduttoreDTO. param is null o incomplete");
+            throw new BadRequestException(new HttpErroreMessage("Error saving ProduttoreDTO. param is null o incomplete"));
         }
 
         ProduttoreEntity savedProduttore = produttoreRepository.save(produttoreMapper.dtoToEntity(objToSave));
