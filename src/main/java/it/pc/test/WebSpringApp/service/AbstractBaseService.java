@@ -6,6 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
+/**
+ * Abstract Base class for READ Operations in services
+ * @param <E> Entity
+ * @param <D> Dto
+ * @param <I> Id type
+ * @param <M> Mapper (dto-entity conversion)
+ * @param <R> Repository (extends JPA)
+ */
 public abstract class AbstractBaseService<E, D, I, M extends IMapperBase<E, D>, R extends JpaRepository<E, I>> {
 
     public List<D> findAllBase() {
