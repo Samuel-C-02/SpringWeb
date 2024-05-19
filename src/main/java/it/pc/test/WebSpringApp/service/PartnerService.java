@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PartnerService extends AbstractBaseService<
+public class PartnerService extends AbstractCrudService<
         PartnerEntity,
         PartnerDTO,
         Integer,

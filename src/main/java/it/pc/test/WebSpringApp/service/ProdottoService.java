@@ -7,16 +7,14 @@ import it.pc.test.WebSpringApp.exceptions.BadRequestException;
 import it.pc.test.WebSpringApp.exceptions.HttpErroreMessage;
 import it.pc.test.WebSpringApp.mapper.ProdottoMapper;
 import it.pc.test.WebSpringApp.repository.ProdottoRepository;
-import it.pc.test.WebSpringApp.utils.LogUtils;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProdottoService extends AbstractBaseService<ProdottoEntity, ProdottoDTO, Integer, ProdottoMapper, ProdottoRepository> {
+public class ProdottoService extends AbstractCrudService<ProdottoEntity, ProdottoDTO, Integer, ProdottoMapper, ProdottoRepository> {
 
     final ProdottoRepository prodottoRepository;
     final ProdottoMapper prodottoMapper = Mappers.getMapper(ProdottoMapper.class);
@@ -60,6 +58,26 @@ public class ProdottoService extends AbstractBaseService<ProdottoEntity, Prodott
             throw new BadRequestException(new HttpErroreMessage("TipoProdotto Id is NULL"));
         }
         return prodottoMapper.entityToDTO(prodottoRepository.getAllProdottiByTipoProdottoId(id));
+    }
+
+    @Override
+    public ProdottoDTO insert(ProdottoDTO newProdotto) {
+        if (newProdotto == null || newProdotto.getProduttoreId() == null) {
+            throw new BadRequestException(new HttpErroreMessage("Error saving the ProdottoDTO. Prodotto Received: " + newProdotto));
+        }
+
+        ProdottoEntity savedProdotto = prodottoRepository.save(prodottoMapper.dtoToEntity(newProdotto));
+        return prodottoMapper.entityToDTO(savedProdotto);
+    }
+
+    @Override
+    public List<ProdottoDTO> insertAll(List<ProdottoDTO> newProdotti) {
+        if (newProdotti == null || newProdotti.isEmpty() || newProdotti.stream().anyMatch(p -> p.getProduttoreId() == null)) {
+            throw new BadRequestException(new HttpErroreMessage("Error saving the Prodotto List. List Received: " + newProdotti));
+        }
+
+        List<ProdottoEntity> savedProdottiList = prodottoRepository.saveAll(prodottoMapper.dtoToEntity(newProdotti));
+        return prodottoMapper.entityToDTO(savedProdottiList);
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SedeService extends AbstractBaseService<SedeEntity, SedeDTO, Integer, SedeMapper, SedeRepository> {
+public class SedeService extends AbstractCrudService<SedeEntity, SedeDTO, Integer, SedeMapper, SedeRepository> {
 
     final SedeRepository sedeRepository;
     final SedeMapper sedeMapper = Mappers.getMapper(SedeMapper.class);

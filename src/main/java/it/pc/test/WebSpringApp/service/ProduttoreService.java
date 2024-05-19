@@ -4,6 +4,8 @@ import it.pc.test.WebSpringApp.dto.ProdottoDTO;
 import it.pc.test.WebSpringApp.dto.ProduttoreDTO;
 import it.pc.test.WebSpringApp.dto.projection.ProduttoreBasicInfo;
 import it.pc.test.WebSpringApp.entity.ProduttoreEntity;
+import it.pc.test.WebSpringApp.exceptions.BadRequestException;
+import it.pc.test.WebSpringApp.exceptions.HttpErroreMessage;
 import it.pc.test.WebSpringApp.mapper.ProduttoreMapper;
 import it.pc.test.WebSpringApp.repository.ProduttoreRepository;
 import org.mapstruct.factory.Mappers;
@@ -14,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class ProduttoreService extends AbstractBaseService<
+public class ProduttoreService extends AbstractCrudService<
         ProduttoreEntity,
         ProduttoreDTO,
         Integer,
@@ -52,7 +54,27 @@ public class ProduttoreService extends AbstractBaseService<
         return produttoreMapper.entityToDTO(produttoreRepository.findProduttoreByNome(nome));
     }
 
-    public List<ProduttoreBasicInfo> getAllProduttoriBasicByIds(Set<Integer> ids){
+    public List<ProduttoreBasicInfo> getAllProduttoriBasicByIds(Set<Integer> ids) {
         return produttoreRepository.getAllProduttoriBasicInfoByIds(ids);
+    }
+
+    @Override
+    public ProduttoreDTO insert(ProduttoreDTO objToSave) {
+        if (objToSave == null || objToSave.getPartner() == null || objToSave.getSede() == null) {
+            throw new BadRequestException(new HttpErroreMessage("Error saving ProduttoreDTO. param is null o incomplete");
+        }
+
+        ProduttoreEntity savedProduttore = produttoreRepository.save(produttoreMapper.dtoToEntity(objToSave));
+        return produttoreMapper.entityToDTO(savedProduttore);
+    }
+
+    @Override
+    public List<ProduttoreDTO> insertAll(List<ProduttoreDTO> objListToSave) {
+        if (objListToSave == null || objListToSave.isEmpty()) {
+            throw new BadRequestException(new HttpErroreMessage("Insert Error: ProduttoreDTOList is null or Empty"));
+        }
+
+        List<ProduttoreEntity> savedProduttori = produttoreRepository.saveAll(produttoreMapper.dtoToEntity(objListToSave));
+        return produttoreMapper.entityToDTO(savedProduttori);
     }
 }
