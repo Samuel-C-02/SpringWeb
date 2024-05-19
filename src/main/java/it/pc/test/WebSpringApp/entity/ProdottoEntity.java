@@ -15,7 +15,7 @@ public class ProdottoEntity extends AbstractAuditEntity {
     @Id
     @Column(name = "id_prodotto")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prodotto_id_generator")
-    @SequenceGenerator(name = "prodotto_id_generator", sequenceName = "prodotto_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "prodotto_id_generator", sequenceName = "prodotto_id_prodotto_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "nome_prodotto")

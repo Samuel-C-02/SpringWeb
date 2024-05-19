@@ -14,7 +14,7 @@ public class PartnerEntity extends AbstractBaseEntity {
     @Id
     @Column(name = "id_partner")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "partner_id_generator")
-    @SequenceGenerator(name = "partner_id_generator", sequenceName = "partner_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "partner_id_generator", sequenceName = "partner_id_partner_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "nome")
