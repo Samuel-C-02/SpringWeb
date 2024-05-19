@@ -8,4 +8,9 @@ public interface IMapperBase<E, D> {
 
     List<D> entityToDTO(List<E> eList);
 
+    E dtoToEntity(D d);
+
+    List<E> dtoToEntity(List<D> dList);
+
+
 }
