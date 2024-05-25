@@ -17,6 +17,6 @@ SpringWeb is a Java-based application built with the Spring Boot framework, util
 - **Utilization of JPA Specification for grid management:** Dynamically defining complex search queries.
 - **Spring Actuator, Spring Batch, Spring AOP:** Exploring potential integrations for improved application functionality.
 - **Docker:** Introducing Docker to simplify deployment using images running on containers with Docker Compose.
-- 
+
 <br>
 This project is currently under development 
