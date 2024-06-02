@@ -14,7 +14,7 @@ import java.util.Objects;
 @Table(name = "tipo_prodotto")
 @Data
 @Immutable
-public class TipoProdottoEntity extends AbstractBaseEntity {
+public class TipoProdottoEntity extends AbstractBaseEntity<Integer> {
 
     @Id
     @Column(name = "id_tipo")

@@ -10,7 +10,7 @@ import java.util.Objects;
 @Data
 @Entity
 @Table(name = "prodotto")
-public class ProdottoEntity extends AbstractAuditEntity {
+public class ProdottoEntity extends AbstractAuditEntity<Integer> {
 
     @Id
     @Column(name = "id_prodotto")

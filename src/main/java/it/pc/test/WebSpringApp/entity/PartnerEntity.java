@@ -9,7 +9,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "partner")
 @Data
-public class PartnerEntity extends AbstractBaseEntity {
+public class PartnerEntity extends AbstractBaseEntity<Integer> {
 
     @Id
     @Column(name = "id_partner")

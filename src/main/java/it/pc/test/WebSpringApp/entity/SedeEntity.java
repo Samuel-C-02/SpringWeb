@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "sede")
 @Data
-public class SedeEntity extends AbstractBaseEntity {
+public class SedeEntity extends AbstractBaseEntity<Integer> {
 
     @Id
     @Column(name = "id_sede")

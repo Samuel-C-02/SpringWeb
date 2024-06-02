@@ -13,7 +13,7 @@ import java.util.Objects;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProduttoreEntity extends AbstractAuditEntity {
+public class ProduttoreEntity extends AbstractAuditEntity<Integer> {
 
     @Id
     @Column(name = "id_produttore")

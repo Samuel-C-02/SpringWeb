@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 @Data
-public abstract class AbstractAuditEntity extends AbstractBaseEntity {
+public abstract class AbstractAuditEntity<EntityIdType> extends AbstractBaseEntity<EntityIdType> {
 
     @Column(name = "data_inserimento")
     private LocalDateTime dataInserimento;
