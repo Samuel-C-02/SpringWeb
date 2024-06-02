@@ -4,16 +4,19 @@ import it.pc.test.WebSpringApp.dto.AbstractBaseDTO;
 import it.pc.test.WebSpringApp.exceptions.BadRequestException;
 import it.pc.test.WebSpringApp.exceptions.HttpErroreMessage;
 import it.pc.test.WebSpringApp.service.AbstractCrudService;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 /**
  * Abstract Controller for CRUD operation
- * @param <Dto> DTO that extends AbstractBaseDTO
+ *
+ * @param <Dto>     DTO that extends AbstractBaseDTO
  * @param <Service> Service that extends AbstractCrudService
- * @param <IdType> Id type
+ * @param <IdType>  Id type
  */
 public abstract class AbstractCrudController
         <Dto extends AbstractBaseDTO<IdType>, Service extends AbstractCrudService<?, Dto, IdType, ?, ?>, IdType>
@@ -36,4 +39,23 @@ public abstract class AbstractCrudController
 
         return getService().insertAll(objListToSave);
     }
+
+    @PutMapping("/update/{id}")
+    public Dto update(@PathVariable(name = "id") IdType id, @RequestBody Dto objToUpdate) {
+        if (id == null || objToUpdate == null) {
+            throw new BadRequestException(new HttpErroreMessage("Received id/obj is null. Id: " + id + " Obj: " + objToUpdate));
+        }
+
+        return getService().update(id, objToUpdate);
+    }
+
+    @PutMapping("/update-batch")
+    public List<Dto> updateAll(@RequestBody List<Dto> listToUpdate) {
+        if (listToUpdate == null || listToUpdate.isEmpty()) {
+            throw new BadRequestException(new HttpErroreMessage("Received list is null or empty"));
+        }
+
+        return getService().updateAll(listToUpdate);
+    }
+
 }
