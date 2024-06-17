@@ -24,7 +24,7 @@ public class PartnerEntity extends AbstractBaseEntity<Integer> {
     private LocalDate dataFondazione;
 
     @Column(name = "n_dipendenti")
-    private Double numeroDipendenti;
+    private Integer numeroDipendenti;
 
     @Column(name = "fatturato_annuo")
     private Double fatturatoAnnuo;

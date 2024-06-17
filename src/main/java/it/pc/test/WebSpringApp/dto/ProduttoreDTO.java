@@ -23,7 +23,7 @@ public class ProduttoreDTO extends AbstractBaseDTO<Integer> {
     private PartnerDTO partner;
 
     private TipoCategoria categoria;
-    private Double numeroDipendenti;
+    private Integer numeroDipendenti;
     private Double fatturatoAnnuo;
     private SedeDTO sede;
     private List<ProdottoDTO> prodotti;

@@ -35,7 +35,7 @@ public class ProduttoreEntity extends AbstractAuditEntity<Integer> {
     private TipoCategoria categoria;
 
     @Column(name = "n_dipendenti")
-    private Double numeroDipendenti;
+    private Integer numeroDipendenti;
 
     @Column(name = "fatturato_annuo")
     private Double fatturatoAnnuo;
