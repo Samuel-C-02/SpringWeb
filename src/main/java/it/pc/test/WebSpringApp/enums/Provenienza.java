@@ -1,8 +1,5 @@
 package it.pc.test.WebSpringApp.enums;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public enum Provenienza implements IEnum<Provenienza> {
 
     OTHER(0),

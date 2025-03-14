@@ -11,16 +11,13 @@ import java.util.Date;
 @NoArgsConstructor
 public class TokenDTO {
 
-  private String token;
-  private LocalDateTime expiresDate;
+    private String token;
+    private LocalDateTime expiresDate;
 
-  public void setExpiresDate(Date expiresDate) {
-    if (expiresDate != null) {
-      this.expiresDate = expiresDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    public void setExpiresDate(Date expiresDate) {
+        if (expiresDate != null) {
+            this.expiresDate = expiresDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        }
     }
-  }
 
-  /*  public LocalDateTime getExpireDate() {
-    return LocalDateTime.now().plus(expiresIn, ChronoUnit.MILLIS);
-  }*/
 }

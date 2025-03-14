@@ -11,7 +11,6 @@ import java.util.Map;
 public interface IEnum<E extends Enum<E> & IEnum<E>> {
 
 
-
     Integer getId();
 
     /**

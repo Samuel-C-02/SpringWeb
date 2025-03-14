@@ -18,15 +18,15 @@ import org.springframework.security.core.GrantedAuthority;
 @Table(name = "roles")
 public class RoleEntity implements GrantedAuthority {
 
-  @Id
-  @Column(name = "id")
-  private Integer id;
+    @Id
+    @Column(name = "id")
+    private Integer id;
 
-  @Column(name = "role")
-  private String role;
+    @Column(name = "role")
+    private String role;
 
-  @Override
-  public String getAuthority() {
-    return role;
-  }
+    @Override
+    public String getAuthority() {
+        return role;
+    }
 }

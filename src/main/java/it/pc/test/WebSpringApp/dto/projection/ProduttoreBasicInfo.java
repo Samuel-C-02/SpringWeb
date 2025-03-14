@@ -22,6 +22,7 @@ public interface ProduttoreBasicInfo {
     // Sede
     @Value("#{T(it.pc.test.WebSpringApp.dto.SedeDTO).ofMinimal(target.sede_id, target.sede_indirizzo, target.sede_nazione)}")
     SedeDTO getSedeProduttore();
+
     // Partner
     @Value("#{target.nome_partner}")
     String getNomePartner();
@@ -29,7 +30,6 @@ public interface ProduttoreBasicInfo {
     // Sede Partner
     @Value("#{target.indirizzo_partner}")
     String getIndirizzoPartner();
-
 
 
 }

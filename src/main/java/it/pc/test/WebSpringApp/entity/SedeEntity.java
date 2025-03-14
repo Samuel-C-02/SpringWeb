@@ -3,7 +3,6 @@ package it.pc.test.WebSpringApp.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 

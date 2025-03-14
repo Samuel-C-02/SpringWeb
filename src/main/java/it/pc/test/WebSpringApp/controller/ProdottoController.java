@@ -31,7 +31,7 @@ public class ProdottoController extends AbstractCrudController<ProdottoDTO, Prod
     }
 
     @GetMapping("all/tipo/{tipoId}")
-    public List<ProdottoDTO> getAllProdottiByTipoProdottoId(@PathVariable(name = "tipoId") Integer tipoId){
+    public List<ProdottoDTO> getAllProdottiByTipoProdottoId(@PathVariable(name = "tipoId") Integer tipoId) {
         return getService().getAllProdottiByTipoProdottoId(tipoId);
     }
 }

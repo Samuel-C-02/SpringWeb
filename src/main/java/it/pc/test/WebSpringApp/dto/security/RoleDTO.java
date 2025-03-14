@@ -6,6 +6,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class RoleDTO {
-  private Integer id;
-  private String role;
+    private Integer id;
+    private String role;
 }
