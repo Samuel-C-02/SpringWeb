@@ -15,14 +15,14 @@ import org.springframework.security.core.GrantedAuthority;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "roles")
+@Table(name = "ruolo")
 public class RoleEntity implements GrantedAuthority {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id_ruolo")
     private Integer id;
 
-    @Column(name = "role")
+    @Column(name = "ruolo_utente")
     private String role;
 
     @Override

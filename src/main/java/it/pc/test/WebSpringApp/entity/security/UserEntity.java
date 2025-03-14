@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "utenti")
+@Table(name = "utente")
 public class UserEntity extends AbstractAuditEntity<Integer> implements UserDetails {
 
     @Id
@@ -37,7 +37,7 @@ public class UserEntity extends AbstractAuditEntity<Integer> implements UserDeta
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "roles_id")
+    @JoinColumn(name = "ruolo_id")
     private RoleEntity ruolo;
 
     @Override
