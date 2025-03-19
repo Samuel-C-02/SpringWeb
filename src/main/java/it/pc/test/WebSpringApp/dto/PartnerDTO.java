@@ -15,6 +15,6 @@ public class PartnerDTO extends AbstractBaseDTO<Integer> {
     private String nome;
     private SedeDTO sede;
     private LocalDate dataFondazione;
-    private Double numeroDipendenti;
+    private Integer numeroDipendenti;
     private Double fatturatoAnnuo;
 }
