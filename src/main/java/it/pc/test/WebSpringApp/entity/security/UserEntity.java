@@ -1,6 +1,8 @@
 package it.pc.test.WebSpringApp.entity.security;
 
+import it.pc.test.WebSpringApp.dto.AbstractBaseDTO;
 import it.pc.test.WebSpringApp.entity.AbstractAuditEntity;
+import it.pc.test.WebSpringApp.entity.AbstractBaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,11 +21,11 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "utente")
-public class UserEntity extends AbstractAuditEntity<Integer> implements UserDetails {
+public class UserEntity extends AbstractBaseEntity<Integer> implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "utenti_id_gen")
-    @SequenceGenerator(name = "utenti_id_gen", sequenceName = "user_id_utente_seq", allocationSize = 1)
+    @SequenceGenerator(name = "utenti_id_gen", sequenceName = "utente_id_utente_seq", allocationSize = 1)
     @Column(name = "id_utente")
     private Integer id;
 

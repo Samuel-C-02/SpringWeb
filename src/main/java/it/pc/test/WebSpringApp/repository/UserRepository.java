@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
     Optional<UserEntity> findByUsername(String username);
 
-    @Query(value = "SELECT COUNT(*) FROM spring.utenti u WHERE u.username = ?1 OR u.email = ?2", nativeQuery = true)
+    @Query(value = "SELECT COUNT(*) FROM web.utente u WHERE u.username = ?1 OR u.email = ?2", nativeQuery = true)
     int checkIfUserExists(String username, String email);
 
     Optional<UserEntity> findByUsernameAndEmail(String username, String email);

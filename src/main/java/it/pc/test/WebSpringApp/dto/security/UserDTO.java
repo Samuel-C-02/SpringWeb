@@ -16,6 +16,6 @@ public class UserDTO extends AbstractBaseDTO<Integer> {
     private String username;
     private String email;
     private String password;
-    private RoleDTO role;
+    private RoleDTO ruolo;
 
 }
