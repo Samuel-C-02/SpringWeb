@@ -13,5 +13,4 @@ public interface ProduttoreMapper extends IMapperBase<ProduttoreEntity, Produtto
 
     List<ProduttoreDTO> entityToDTO(List<ProduttoreEntity> eList);
 
-
 }

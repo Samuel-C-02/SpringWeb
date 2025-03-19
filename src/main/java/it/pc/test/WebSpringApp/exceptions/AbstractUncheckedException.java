@@ -27,8 +27,8 @@ public abstract class AbstractUncheckedException extends RuntimeException {
 
     public HttpErroreMessage getError() {
         return error != null
-               ? error
-               : new HttpErroreMessage(GlobalConstants.HTTP_DEFAULT_MESSAGE);
+                ? error
+                : new HttpErroreMessage(GlobalConstants.HTTP_DEFAULT_MESSAGE);
 
     }
 
