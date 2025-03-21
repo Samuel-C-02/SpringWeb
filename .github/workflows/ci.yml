@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'  # Set Java 17 as the required version
-          distribution: 'corretto'  # Use Amazon Corretto distribution
+          distribution: 'adoptopenjdk'  # Use AdoptOpenJDK distribution (compatible with Corretto)
 
       - name: Install dependencies and run tests
         run: |
