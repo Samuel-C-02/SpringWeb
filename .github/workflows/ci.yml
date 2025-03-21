@@ -14,12 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2  # Checkout the code in the PR
 
-      - name: Set up JDK 17
+      - name: Set up JDK 17 (Corretto)
         uses: actions/setup-java@v2
         with:
           java-version: '17'  # Set Java 17 as the required version
+          distribution: 'corretto'  # Use Amazon Corretto distribution
 
       - name: Install dependencies and run tests
         run: |
-          .\mvnw clean install
+          .\mvnw clean install  # Replace with your actual Maven command (e.g., mvn or .\mvnw for Windows)
           mvn test              # Run tests
