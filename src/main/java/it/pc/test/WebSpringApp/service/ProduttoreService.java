@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class ProduttoreService extends AbstractCrudService<
@@ -33,7 +34,7 @@ public class ProduttoreService extends AbstractCrudService<
         this.prodottoService = prodottoService;
     }
 
-    public ProduttoreDTO getProduttoriWithProdotti(Integer id) {
+    public ProduttoreDTO getProduttoreWithProdotti(Integer id) {
         ProduttoreDTO produttoreById = findByIdBase(id);
         List<ProdottoDTO> prodottiByProduttoreId = prodottoService.findAllProdottiByProduttoreId(id);
         produttoreById.setProdotti(prodottiByProduttoreId);
@@ -58,6 +59,26 @@ public class ProduttoreService extends AbstractCrudService<
         return produttoreRepository.getAllProduttoriBasicInfoByIds(ids);
     }
 
+    public List<ProduttoreDTO> getAllProduttoriWithProdotti() {
+        List<ProduttoreDTO> allBase = findAllBase();
+        fetchAndSetProdotti(allBase);
+        return allBase;
+    }
+
+    /**
+     * Retrieve a paginated list of Prodotti based on the provided page number and size
+     *
+     * @param pageNumber page number
+     * @param pageSize   number of elements in the page
+     * @return paged prodotti
+     */
+    @Override
+    public List<ProduttoreDTO> findAllPaged(int pageNumber, int pageSize) {
+        List<ProduttoreDTO> allPaged = super.findAllPaged(pageNumber, pageSize);
+        fetchAndSetProdotti(allPaged);
+        return allPaged;
+    }
+
     @Override
     public ProduttoreDTO insert(ProduttoreDTO objToSave) {
         if (objToSave == null || objToSave.getPartner() == null || objToSave.getSede() == null) {
@@ -76,5 +97,13 @@ public class ProduttoreService extends AbstractCrudService<
 
         List<ProduttoreEntity> savedProduttori = produttoreRepository.saveAll(produttoreMapper.dtoToEntity(objListToSave));
         return produttoreMapper.entityToDTO(savedProduttori);
+    }
+
+    private void fetchAndSetProdotti(List<ProduttoreDTO> produttoreList) {
+        if (produttoreList == null || produttoreList.isEmpty()) {
+            return;
+        }
+        Set<Integer> allProduttoreIds = produttoreList.stream().map(ProduttoreDTO::getId).collect(Collectors.toSet());
+        prodottoService.findAllProdottiByProduttoreId(allProduttoreIds);
     }
 }

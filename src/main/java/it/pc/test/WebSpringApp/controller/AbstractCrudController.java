@@ -46,7 +46,7 @@ public abstract class AbstractCrudController
             throw new BadRequestException(new HttpErroreMessage("Received id/obj is null. Id: " + id + " Obj: " + objToUpdate));
         }
 
-        return getService().update(id, objToUpdate);
+        return getService().update(objToUpdate);
     }
 
     @PutMapping("/update-batch")
