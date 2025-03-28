@@ -7,11 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Integer> {
 
-    List<ProdottoEntity> findAllByProduttoreId(Integer id);
+    @Query(value = "SELECT * FROM  web.Prodotto p WHERE p.produttore_id IN (?1)", nativeQuery = true)
+    List<ProdottoEntity> findAllByProduttoreId(Set<Integer> id);
 
     @Query(value = "SELECT * FROM web.Prodotto p WHERE p.disponibile IS TRUE", nativeQuery = true)
     List<ProdottoEntity> getAllProdottiDisponibili();

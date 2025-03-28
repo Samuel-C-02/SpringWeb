@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProdottoService extends AbstractCrudService<ProdottoEntity, ProdottoDTO, Integer, ProdottoMapper, ProdottoRepository> {
@@ -36,10 +37,19 @@ public class ProdottoService extends AbstractCrudService<ProdottoEntity, Prodott
     }
 
     public List<ProdottoDTO> findAllProdottiByProduttoreId(Integer id) {
-        if (id == null) {
-            throw new BadRequestException(new HttpErroreMessage("Produttore Id is NULL"));
+        return findAllProdottiByProduttoreId(Set.of(id));
+    }
+
+    /**
+     * Fetch all Prodotti with ProduttoreIds given in the parameter
+     *
+     * @param ids Produttore IDs
+     */
+    public List<ProdottoDTO> findAllProdottiByProduttoreId(Set<Integer> ids) {
+        if (ids == null || ids.isEmpty()) {
+            throw new BadRequestException(new HttpErroreMessage("Produttore Id is NULL or empty"));
         }
-        return prodottoMapper.entityToDTO(prodottoRepository.findAllByProduttoreId(id));
+        return prodottoMapper.entityToDTO(prodottoRepository.findAllByProduttoreId(ids));
     }
 
     public List<ProdottoDTO> getAllProdottiDisponibili() {
