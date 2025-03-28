@@ -3,12 +3,11 @@ package it.pc.test.WebSpringApp.controller.security;
 import it.pc.test.WebSpringApp.dto.security.TokenDTO;
 import it.pc.test.WebSpringApp.dto.security.UserDTO;
 import it.pc.test.WebSpringApp.service.security.UserService;
+import it.pc.test.WebSpringApp.utils.annotation.AdminUser;
+import it.pc.test.WebSpringApp.utils.annotation.BaseUser;
 import it.pc.test.WebSpringApp.utils.annotation.NoSwaggerLogin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -16,6 +15,11 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/user-info/{id}")
+    public UserDTO getUserInfo(@PathVariable(name = "id") Integer id) {
+        return userService.getUserById(id);
+    }
 
     @NoSwaggerLogin
     @PostMapping("/signup")
@@ -32,7 +36,18 @@ public class AuthController {
         return userService.login(loginUser);
     }
 
-    // TODO Endpoint to get user info
+    @BaseUser
+    @PutMapping("/update-user")
+    public UserDTO updateUser(@RequestBody UserDTO updatedUser) {
+        return userService.updateUser(updatedUser);
+    }
+
+    @AdminUser
+    @DeleteMapping("/delete-user")
+    public boolean deleteUser(@RequestParam Integer userId) {
+        return userService.deleteUser(userId);
+    }
 
     // TODO Endpoint to refresh jwt
+
 }
