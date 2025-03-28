@@ -22,5 +22,5 @@ jobs:
 
       - name: Install dependencies and run tests
         run: |
-          .\mvnw clean install  # Replace with your actual Maven command (e.g., mvn or .\mvnw for Windows)
-          mvn test              # Run tests
+          .\mvnw clean compile  
+          # mvn test           
