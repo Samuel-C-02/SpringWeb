@@ -1,14 +1,20 @@
 package it.pc.test.WebSpringApp.service;
 
 import it.pc.test.WebSpringApp.dto.ProdottoDTO;
+import it.pc.test.WebSpringApp.dto.grid.GridRequest;
 import it.pc.test.WebSpringApp.entity.ProdottoEntity;
 import it.pc.test.WebSpringApp.enums.Provenienza;
 import it.pc.test.WebSpringApp.exceptions.BadRequestException;
 import it.pc.test.WebSpringApp.exceptions.HttpErroreMessage;
 import it.pc.test.WebSpringApp.mapper.ProdottoMapper;
 import it.pc.test.WebSpringApp.repository.ProdottoRepository;
+import it.pc.test.WebSpringApp.repository.grid.GridSpecification;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -68,6 +74,26 @@ public class ProdottoService extends AbstractCrudService<ProdottoEntity, Prodott
             throw new BadRequestException(new HttpErroreMessage("TipoProdotto Id is NULL"));
         }
         return prodottoMapper.entityToDTO(prodottoRepository.getAllProdottiByTipoProdottoId(id));
+    }
+
+    /**
+     * Crea l'oggetto paginato, filtrato e ordinano per creare la Griglia in base ai parametri ricevuti dalla richiesta
+     *
+     * @param richiestaGriglia Oggetti contenente filtri, ordinamenti, etc...
+     */
+    public Page<ProdottoDTO> getProdottiGrid(GridRequest richiestaGriglia) {
+
+        Sort sortOrder = GridSpecification.buildSort(richiestaGriglia);
+
+        PageRequest pageRequest = PageRequest.of(
+                richiestaGriglia.getPageNumber(), // n pagina
+                richiestaGriglia.getPageSize(), // n elementi
+                sortOrder); // Sort applicato
+
+        Specification<ProdottoEntity> whereGrid = GridSpecification.buildGridQuery(richiestaGriglia);// Applica filtri (crea la WHERE da passare a JPA)
+        Page<ProdottoEntity> pagedGrid = prodottoRepository.findAll(whereGrid, pageRequest);
+        return pagedGrid.map(prodottoMapper::entityToDTO);
+
     }
 
     @Override
