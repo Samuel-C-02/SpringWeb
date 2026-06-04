@@ -1,9 +1,11 @@
 package it.pc.test.WebSpringApp.controller;
 
 import it.pc.test.WebSpringApp.dto.ProdottoDTO;
+import it.pc.test.WebSpringApp.dto.grid.GridRequest;
 import it.pc.test.WebSpringApp.enums.Provenienza;
 import it.pc.test.WebSpringApp.service.ProdottoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,5 +35,10 @@ public class ProdottoController extends AbstractCrudController<ProdottoDTO, Prod
     @GetMapping("all/tipo/{tipoId}")
     public List<ProdottoDTO> getAllProdottiByTipoProdottoId(@PathVariable(name = "tipoId") Integer tipoId) {
         return getService().getAllProdottiByTipoProdottoId(tipoId);
+    }
+
+    @PostMapping("/grid")
+    public Page<ProdottoDTO> getGrigliaProdotti(@RequestBody GridRequest richiesta){
+        return getService().getProdottiGrid(richiesta);
     }
 }
