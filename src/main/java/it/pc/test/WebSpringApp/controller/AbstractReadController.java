@@ -1,11 +1,14 @@
 package it.pc.test.WebSpringApp.controller;
 
+import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import it.pc.test.WebSpringApp.dto.AbstractBaseDTO;
+import it.pc.test.WebSpringApp.dto.security.TokenDTO;
 import it.pc.test.WebSpringApp.exceptions.BadRequestException;
 import it.pc.test.WebSpringApp.exceptions.EntityNotFoundException;
 import it.pc.test.WebSpringApp.service.AbstractBaseService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -31,5 +34,9 @@ public abstract class AbstractReadController
         }
     }
 
+    @GetMapping("/paged")
+    public List<Dto> getAllPaginated(@RequestParam int pageNumber, @RequestParam int pageSize) {
+        return getService().findAllPaged(pageNumber, pageSize);
+    }
 
 }

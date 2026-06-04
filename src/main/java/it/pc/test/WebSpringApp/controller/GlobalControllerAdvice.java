@@ -3,6 +3,7 @@ package it.pc.test.WebSpringApp.controller;
 import it.pc.test.WebSpringApp.exceptions.BadRequestException;
 import it.pc.test.WebSpringApp.exceptions.HttpErroreMessage;
 import it.pc.test.WebSpringApp.exceptions.InternalErrorException;
+import it.pc.test.WebSpringApp.exceptions.RateLimiterException;
 import it.pc.test.WebSpringApp.utils.LogUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,12 @@ public class GlobalControllerAdvice {
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<HttpErroreMessage> badRequestErrorHandler(BadRequestException exc) {
+        LogUtils.logException(exc);
+        return new ResponseEntity<>(exc.getError(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RateLimiterException.class)
+    public ResponseEntity<HttpErroreMessage> badRequestErrorHandler(RateLimiterException exc) {
         LogUtils.logException(exc);
         return new ResponseEntity<>(exc.getError(), HttpStatus.BAD_REQUEST);
     }

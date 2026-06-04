@@ -20,7 +20,7 @@ public class ProduttoreController extends AbstractCrudController<ProduttoreDTO, 
 
     @GetMapping("/{idProduttore}/with-products")
     public ProduttoreDTO getProduttoreWithProdotti(@PathVariable(name = "idProduttore") Integer id) {
-        return produttoreService.getProduttoriWithProdotti(id);
+        return produttoreService.getProduttoreWithProdotti(id);
     }
 
     @GetMapping("/nome")

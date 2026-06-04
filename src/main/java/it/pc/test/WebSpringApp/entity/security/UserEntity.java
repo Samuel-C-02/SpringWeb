@@ -1,7 +1,5 @@
 package it.pc.test.WebSpringApp.entity.security;
 
-import it.pc.test.WebSpringApp.dto.AbstractBaseDTO;
-import it.pc.test.WebSpringApp.entity.AbstractAuditEntity;
 import it.pc.test.WebSpringApp.entity.AbstractBaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,11 +38,11 @@ public class UserEntity extends AbstractBaseEntity<Integer> implements UserDetai
 
     @ManyToOne
     @JoinColumn(name = "ruolo_id")
-    private RoleEntity ruolo;
+    private RoleEntity role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(getRuolo());
+        return List.of(getRole());
     }
 
     @Override
