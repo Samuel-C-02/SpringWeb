@@ -3,13 +3,14 @@ package it.pc.test.WebSpringApp.repository;
 import it.pc.test.WebSpringApp.entity.ProdottoEntity;
 import it.pc.test.WebSpringApp.enums.Provenienza;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Integer> {
+public interface ProdottoRepository extends JpaRepository<ProdottoEntity, Integer>, JpaSpecificationExecutor<ProdottoEntity> {
 
     List<ProdottoEntity> findAllByProduttoreId(Integer id);
 
